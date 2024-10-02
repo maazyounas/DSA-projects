@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selection sort</title>
+    <script>
+      let data = [ 6,56, 31, 23, 1];
+
+      function selectionSort(data) {
+        for (let i = 0; i < data.length - 1; i++) {
+          let small = i;
+
+          for (let j = i + 1; j < data.length; j++) {
+            if (data[small] > data[j]) {
+              small= j;
+              
+            }
+            
+          }
+          let temp = data[small];
+              data[small] = data[i];
+              data[i] = temp;
+        }
+      }
+
+      selectionSort(data);
+      console.log(data);
+    </script>
+  </head>
+  <body></body>
+</html>

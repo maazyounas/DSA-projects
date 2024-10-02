@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Data Structure</title>
+    
+
+    <script>
+        // Graph is a non linear data structure , directed (for traversing there is a specific path) and indirected (no specific path)
+    //     node graph (no node is connected ) 
+
+    // graph with Array
+        let data =[
+            [1,0,0,1],
+            [1,1,1,1],
+            [0,0,0,1],
+            [0,0,0,1],
+        ]
+        console.log(data[3][3]);
+
+    // graph with object 
+
+    let adjList ={
+        'a' : ['b','c'],
+        'b' : ['a','b'],
+        'c' : ['a','d'],
+        'd' : ['b','c','d'],
+    }
+    console.log(adjList.a[0]);
+
+    class Graph{
+        constructor(){
+            this.data ={};
+        }
+
+        addVertex(vertex){
+            if(!this.data[vertex]){
+                this.data[vertex]=[];
+            }
+        }
+
+        addEdge(v1,v2){
+            if(!this.data[v1]){
+                this.addVertex(v1);
+            }
+            if(!this.data[v2]){
+                this.addVertex(v2);
+            }
+
+            this.data[v1].push(v2);
+            this.data[v2].push(v1);
+        }
+
+        removeEdge(v1, v2){
+            this.data[v1] = this.data[v1].filter((item)=>{
+                return item!=v2;
+            });
+
+            this.data[v2] = this.data[v2].filter((item)=>{
+                return item!=v1;
+            });
+        }
+
+        removeVertex(vertex){
+            if(!this.data[vertex]){
+                return ;
+            }
+            for( let item of this.data[vertex]){
+                this.removeEdge(vertex,item);
+            }
+            delete this.data[vertex];
+        }
+    }
+
+    let graph1 = new Graph();
+    graph1.addVertex('a');
+    graph1.addVertex('b');
+    graph1.addVertex('c');
+    graph1.addVertex('d');
+
+graph1.addEdge("a","c");
+graph1.addEdge("a","b");
+graph1.addEdge("b","c");
+graph1.addEdge("b","d");
+
+graph1.removeEdge("a","b");
+
+graph1.removeVertex('a')
+
+    console.log(graph1.data);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

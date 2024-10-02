@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack With Class</title>
+    <script>
+        class Stack{
+            data=[];
+            currentSize;
+            maxSize;
+            revArr=[];
+
+            constructor(size){
+                this.maxSize = size;
+                this.currentSize = this.data.length;
+                
+            }
+            
+            push(newEl){
+                if(this.currentSize > this.maxSize){
+                    alert("Stack is full");
+                }
+                else{
+                    this.data[this.currentSize]=newEl;
+                    this.currentSize++;
+                }
+            }
+
+            pop(){
+                if(this.currentSize == 0){
+                    alert("Stack is empty");
+                }
+                else{
+                    lastRemoveEl = this.revArr[currentSize-1];
+                    this.currentSize--;
+                    this.data.length=this.currentSize;
+                    return lastRemoveEl;
+                }
+            }
+
+            reverseArr(item){
+                for (let i = 0; i < this.currentSize; i++) {
+                    push(this.item[i]);
+                }
+                for (let i = 0; i < this.currentSize; i++) {
+                    this.item[i]=pop();
+                }
+            }
+
+            display(){
+                for(let i=0; i<this.data.length;i++){
+                    console.log(this.data[i]);
+                }
+
+            }
+
+        }
+
+        st1 = new Stack(5);
+        st1.revArr()
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

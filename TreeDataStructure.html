@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tree in Data Structure</title>
+    <script>
+      // tree is a non linear data structure , linear is a sequence
+      // top most node is root node lines are edges terminal nodes don,t have childs (last one nodes)
+      // level of root is 0 and then in increases by childs
+      // in binary tree there can be max two nodes right and left
+      // in binary search tree left node is smaller than root node and right node is greater then root node
+
+      class node {
+        constructor(val) {
+          this.value = val;
+          this.left = null;
+          this.right = null;
+        }
+      }
+
+      class BSTree {
+        constructor() {
+          this.root = null;
+        }
+
+        isTreeEmpty() {
+          if (this.root === null) {
+            return true;
+          }
+        }
+
+        makeTree(val) {
+          let NewNode = new node(val);
+          if (this.root === null) {
+            this.root = NewNode;
+          } else {
+            this.insertNode(this.root, NewNode);
+          }
+        }
+
+        insertNode(root, NewNode) {
+          if (root.value > NewNode.value) {
+            if (root.left === null) {
+              root.left = NewNode;
+            } else {
+              this.insertNode(root.left, NewNode);
+            }
+          } else {
+            if (root.right === null) {
+              root.right = NewNode;
+            } else {
+              this.insertNode(root.right, NewNode);
+            }
+          }
+        }
+
+        searchNode(root, val) {
+          if (root === null) {
+            return false;
+          } else if (root.value === val) {
+            return true;
+          } else if (root.value < val) {
+            return this.searchNode(root.right, val);
+          } else {
+            return this.searchNode(root.left, val);
+          }
+        }
+
+        // depth first Search
+        preOrder(root) {
+          if (root) {
+            console.log("PreOrder Traversing ", root.value);
+            this.preOrder(root.left);
+            this.preOrder(root.right);
+          }
+        }
+
+        inOrder(root) {
+          if (root) {
+            this.inOrder(root.left);
+            console.log("InOrder Traversing ", root.value);
+            this.inOrder(root.right);
+          }
+        }
+
+        postOrder(root) {
+          if (root) {
+            this.postOrder(root.left);
+            this.postOrder(root.right);
+            console.log("PostOrder Traversing ", root.value);
+          }
+        }
+
+        //Breadth First Search
+        bfsTraversing() {
+          let queue = [];
+          queue.push(this.root);
+          while (queue.length) {
+            let current = queue.shift();
+            if (current.left) {
+              queue.push(current.left);
+            }
+            if (current.right) {
+              queue.push(current.right);
+            }
+
+            console.log("BFS ", current.value);
+          }
+        }
+
+        minvalue(root) {
+          if (!root.left) {
+            return root.value;
+          } else {
+            return this.minvalue(root.left);
+          }
+        }
+
+        maxvalue(root) {
+          if (!root.right) {
+            return root.value;
+          } else {
+            return this.maxvalue(root.right);
+          }
+        }
+
+        removeData(value) {
+          this.root = this.deleteNode(this.root, value);
+        }
+
+        deleteNode(root, value) {
+          if (root === null) {
+            return empty;
+          }
+          if (value < root.value) {
+            root.left = this.deleteNode(root.left, value);
+          } else if (value > root.value) {
+            root.right = this.deleteNode(root.right, value);
+          } else {
+            if (!root.left && !root.right) {
+              return null;
+            } else if (!root.left) {
+              return root.right;
+            } else if (!root.right) {
+              return root.left;
+            }
+            root.value = minvalue(root.right);
+            root.right = this.deleteNode(root.right, root.value);
+          }
+          return root;
+        }
+      }
+
+      let bst = new BSTree();
+      bst.makeTree(20);
+      bst.makeTree(10);
+      bst.makeTree(5);
+      bst.makeTree(40);
+      console.log(bst.searchNode(bst.root, 40));
+      bst.preOrder(bst.root);
+      bst.inOrder(bst.root);
+      bst.postOrder(bst.root);
+      console.log(bst.minvalue(bst.root));
+      console.log(bst.maxvalue(bst.root));
+      bst.removeData(5);
+      bst.bfsTraversing();
+
+      console.log(bst);
+      // console.log(bst.isTreeEmpty());
+    </script>
+  </head>
+  <body></body>
+</html>

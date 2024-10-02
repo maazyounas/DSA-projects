@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Array through Recursion</title>
+    <script>
+        let data =[5,4,2,8,9,12,8,5,63,23,12];
+        let temp;
+        function reverseArray(data,start,end){
+            if(start<=end){
+            temp =data[start];
+            data[start] = data[end];
+            data[end]=temp;
+            reverseArray(data,start+1,end-1);
+
+            }
+        }
+        // default ftn for reversing an array  [data.reverse();]
+        reverseArray(data,0,data.length-1);
+        console.log(data);
+    </script>
+</head>
+<body>
+    <h1>Reverse Array through Recursion</h1>
+</body>
+</html>

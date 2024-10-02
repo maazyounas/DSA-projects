@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse String Through Stack</title>
+    <script>
+        let stack =[];
+        let currentSize = stack.length;
+        let str ="maaz";
+
+        function push(newvalue){
+            stack[currentSize]=newvalue;
+            currentSize+=1;
+        }
+
+        function pop(){
+            lastRemovedItem = stack[currentSize-1];
+            currentSize-=1;
+            stack.length=currentSize;
+            return lastRemovedItem;
+        }
+
+        function reverseString(item){
+            
+            for (let i=0;i<item.length;i++){
+                push(item[i]);
+            }
+            for (let i=0;i<item.length;i++){
+                item[i] = pop();
+            }
+           
+        }
+        
+        str =str.split("");      // default ftn to convert str to and array
+        reverseString(str);
+        console.warn(str.join(""));    // array to string
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

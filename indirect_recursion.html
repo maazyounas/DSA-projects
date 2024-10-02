@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InDirect Recursion</title>
+    <Script>
+        let money = 70;
+        let totalApple =0;
+        function buyApple(x){
+            if(x>= 0){
+                
+                
+                console.warn("you have ", x ," RS and ",totalApple, " apples" );
+                buyMore(x-10);
+            }
+            else{
+                console.log("You don't have enough money to buy apples");
+            }
+        }
+
+        function buyMore(x){
+            totalApple++;
+            buyApple(x);
+            
+        }
+        buyApple(money);
+    </Script>
+</head>
+<body>
+    <h1>
+        InDirect Recursion
+    </h1>
+    <form id="InDirect Recursion form">
+    <input type="number" id="money" placeholder="Enter number">
+    <button onclick="buyApple()">Buy Apple</button>
+</form>
+</body>
+</html>

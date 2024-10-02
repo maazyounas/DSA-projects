@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Array Deletion</title>
+    <script>
+        function deleteEl()
+        {
+        let data =[50,23,12,2,89,21];
+        let position =document.getElementById('position').value;
+        position =parseInt(position);
+
+        for(let i=position; i<data.length-1;i++)
+        {
+            data[i]=data[i+1];
+        }
+        data.length=data.length-1;
+        console.warn(data);
+    }
+    
+    </script>
+</head>
+<body>
+    <input type="text" id="position" placeholder="Enter position">
+    <button onclick="deleteEl()">Delete</button>
+</body>
+</html>

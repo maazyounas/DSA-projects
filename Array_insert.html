@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Array Insertion</title>
+    <script>
+      function insertEL() {
+        let data = [40, 20, 10, 30, 2, 1, 56, 87];
+        let newEL = document.getElementById("newEL").value;
+        let position = document.getElementById("position").value;
+        //console.warn(data);
+
+        for (let i = data.length - 1; i >= 0; i--) {
+          if (i >= position) {
+            data[i + 1] = data[i];
+            if (i == position) {
+              data[i] = newEL;
+            }
+          }
+        }
+        console.warn(data);
+      }
+      
+    </script>
+  </head>
+  <body>
+    <input type="text" id="position" placeholder="Enter Position" />
+    <input type="text" id="newEL" placeholder="Enter New element" />
+    <button onclick="insertEL()">insert</button>
+  </body>
+</html>

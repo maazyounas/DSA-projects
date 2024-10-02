@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Array Traversing</title>
+    <script>
+        let data = [9, 85, 7 ,21, 0, 8 ,36,11,54,12];
+        /*for (let i =0; i<data.length;i++){
+            document.write( `Array  ${i} is  ${data[i]} <br>`)
+        }*/
+       function getelement(){
+        let el =document.getElementById('element').value;
+            alert(data[el]);
+       }
+    </script>
+</head>
+<body>
+    <input type ="text" id="element"/>
+    <button onclick="getelement()"> Get Element</button>
+</body>
+</html>

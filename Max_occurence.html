@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maximum Occurence of a Character</title>
+    <script>
+      let str = "maaz";
+      let strobj = {};
+      let maxkey = "";
+      for (let i = 0; i < str.length; i++) {
+        let key = str[i];
+        if (!strobj[key]) {
+          strobj[key] = 0;
+        }
+        strobj[key]++;
+        if (maxkey == "" || strobj[key] > strobj[maxkey]) {
+          maxkey = key;
+        }
+      }
+      console.log(maxkey);
+    </script>
+  </head>
+
+  <body></body>
+</html>

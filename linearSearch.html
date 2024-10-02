@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Search in JavaScript</title>
+    <script>
+        
+
+        function linearSearch(){
+        let data=[9,76,54,34,23,12,76]
+        let target=document.getElementById("target").value;
+        target = parseInt(target);
+        let pos = undefined;
+
+        for(let i=0;i<=data.length;i++){
+            if(data[i]== target){
+                pos = i;
+                alert("Element found at index "+ pos);
+                break;
+            }
+            else{
+                console.warn("Element not found");
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    
+    <input type="text" id ="target" placeholder="Enter target to be searched">
+    <button onclick="linearSearch()">Search</button>
+</body>
+</html>

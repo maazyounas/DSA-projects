@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue in Data Structure</title>
+    <script>
+        let queue=[];
+        let currentSize = queue.length;
+        let maxSize =5;
+
+        function enQueue(){   // push
+            let inputValue = document.getElementById('number').value;
+            if(currentSize < maxSize){
+                queue[currentSize]=inputValue;
+                currentSize++;
+                
+            }
+            else{
+                alert("Queue is full");
+            }
+        }
+
+        function deQueue(){       // pop
+            if(isempty()){
+                alert("Queue is enpty");
+            }
+            else{
+                for(let i =0; i<queue.length;i++){     // removing first element first
+                    queue[i] = queue[i+1];
+
+                }
+                currentSize--;
+                queue.length=currentSize;
+            }
+        }
+
+        function front(){     // first value in queue
+            if(isempty()){
+                alert("Queue is Empty")
+            }
+            else{
+                console.log("Front = ",queue[0]);
+            }
+        }
+
+        function rear(){      // last value in queue
+            if(!isempty()){
+                
+                console.log("Rear = ",queue[currentSize-1]);
+            }
+            else{
+                alert("Queue is empty");
+            }
+        }
+
+        function queueDisplay(){
+            
+            console.log(queue)
+        }
+
+        function isempty(){
+            if (currentSize <=0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    </script>
+</head>
+
+    <h1>Queue Implementation</h1>
+    <input type="text" id="number" placeholder="Enter value to enQueue">
+    <button onclick="enQueue()">Enqueue</button>
+    <br><br>
+    <button onclick="deQueue()">Dequeue</button>
+    <button onclick="front()">Show Front</button>
+    <button onclick="rear()">Show Rear</button>
+    <br><br>
+    <button onclick="queueDisplay()">Show element</button>
+
+    
+</body>
+</html>

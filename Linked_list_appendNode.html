@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linked list in Data Structure</title>
+    <script>
+      class LinkedList {
+        constructor(value) {
+          this.head = {
+            val: value,
+            next: null,
+          };
+          this.tail = this.head;
+          this.size = 0;
+          this.appendNode();
+        }
+
+        appendNode(appendedval) {
+          this.node = {
+            val: appendedval,
+            next: null,
+          };
+          this.tail.next = this.node;
+          this.tail = this.node;
+          this.size++;
+        }
+
+        traversing() {
+          this.counter = 0;
+          this.currentNode = this.head;
+          while (this.counter < this.size) {
+            //console.log(this.currentNode);
+            this.currentNode = this.currentNode.next;
+            this.counter++;
+          }
+        }
+
+        removeNode(index) {
+          this.counter = 1;
+          this.leadnode = this.head;
+          if (index == 1) {
+            this.head = this.head.next;
+          } else {
+            while (this.counter < index - 1) {
+              this.leadnode = this.leadnode.next;
+              this.counter++;
+            }
+            this.newNode = this.leadnode.next.next;
+            this.leadnode.next = this.newNode;
+          }
+        }
+
+        insert(index, value) {
+          this.counter = 1;
+          this.leadnode = this.head;
+          this.insertNode = {
+            val: value,
+            next: this.leadnode.next,
+          };
+
+          if (index == 1) {
+            this.leadnode = this.insertNode;
+          } else {
+            while (this.counter < index - 1) {
+              this.nextNode = this.leadnode.next;
+              this.leadnode = this.insertNode;
+              this.counter++;
+            }
+          }
+        }
+
+        Search(data) {
+          this.result = undefined;
+          this.lead = this.head;
+          this.loop = true;
+          while (this.loop) {
+            this.lead = this.lead.next;
+            this.loop = !!this.lead;
+            if (this.loop && this.lead.val == this.data) {
+              this.loop = false;
+              this.result = this.lead;
+            }
+          }
+        }
+      }
+
+      let linkedlist = new LinkedList(50);
+      linkedlist.appendNode(60);
+      linkedlist.appendNode(70);
+      linkedlist.appendNode(80);
+      linkedlist.appendNode(90);
+      linkedlist.traversing();
+      //linkedlist.removeNode(2);
+      linkedlist.insert(3, 99999999);
+      linkedlist.Search(99999999);
+      console.log(linkedlist);
+    </script>
+  </head>
+  <body></body>
+</html>

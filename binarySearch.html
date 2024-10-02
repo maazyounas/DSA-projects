@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary search with recursion</title>
+    <script>
+      let data = [12, 34, 43, 45, 56, 65, 76];
+      let start = 0;
+      let end = data.length - 1;
+      let target = 5;
+      let position = 0;
+      function BinaryRecursion(data, start, end) {
+        let mid = Math.floor((start + end) / 2);
+        if (data[mid] == target) {
+          position = mid;
+          return true;
+        } else if (data[mid] > target) {
+          BinaryRecursion(data, start, mid - 1);
+        } else if (data[mid] < target) {
+          BinaryRecursion(data, mid + 1, end);
+        } else {
+          console.warn("not present");
+        }
+      }
+      BinaryRecursion(data, start, end);
+      console.log(position);
+    </script>
+  </head>
+  <body></body>
+</html>

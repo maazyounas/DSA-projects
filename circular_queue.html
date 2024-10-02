@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circular Queue</title>
+    <script>
+        class Queue{
+            constructor(size){
+                this.currentsize=0;
+                this.max=size;
+                this.item = new Array(size);   // creating AN Array
+                this.rear = -1;
+                this.front = -1;
+            }
+            enQueue(value){
+                if(this.currentsize!=this.max){
+                    if(this.rear == this.max-1){
+                        this.rear=0;
+                    
+                     }
+                     else{
+                        this.rear++;
+                     }
+                     this.item[this.rear]=value;
+                     this.currentsize++;
+                     if(this.front == -1){
+                        this.front= this.rear;
+                     }
+            }
+            }
+
+            deQueue(){
+                if(this.currentsize!=0){
+                    this.item[this.front]= null;
+                    if(this.front == this.max-1){
+                        this.front=0;
+                    }
+                    else{
+                        this.front++;
+                    }
+                    this.currentsize--;
+                }
+                else{
+                    this.front=-1;
+                    this.rear=-1;
+                    console.log("Queue is empty")
+                }
+
+            }
+        
+    }
+
+        let queue = new Queue(5);   // creating class obj
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
